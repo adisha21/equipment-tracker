@@ -1,0 +1,40 @@
+body {
+  background: #f4f6f8;
+  font-family: Arial;
+}
+
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.form input, .form select {
+  margin: 5px;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.danger {
+  background: #dc3545;
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
