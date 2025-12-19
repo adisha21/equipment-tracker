@@ -1,0 +1,15 @@
+
+
+![Equipment Dashboard]
+
+### Equipment Management Dashboard
+This screen shows the main dashboard of the application.
+All equipment is displayed in a table with details such as name, type, status,
+and last cleaned date.
+
+![Add Equipment]
+
+### Add / Edit Equipment
+This screen shows the form used to add or edit equipment details.
+The user can enter the equipment name, select its type and status,
+and choose the last cleaned date.
