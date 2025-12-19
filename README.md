@@ -50,6 +50,60 @@ PUT /api/equipment/:id – Update equipment
 DELETE /api/equipment/:id – Delete equipment
 
 
+How to Run the Project Locally
+Prerequisites
+
+Make sure you have the following installed:
+
+Node.js (v16 or above)
+
+npm
+
+Step 1: Clone the repository
+git clone https://github.com/adisha21/equipment-tracker.git
+cd equipment-tracker
+
+Step 2: Start the backend server
+cd backend
+npm install
+npm start
+
+
+The backend will run at:
+
+http://localhost:5000
+
+Step 3: Start the frontend application
+
+Open a new terminal window and run:
+
+cd frontend
+npm install
+npm start
+
+
+The frontend will run at:
+
+http://localhost:3000
+
+Step 4: Use the application
+
+Open your browser and go to:
+
+http://localhost:3000
+
+
+You can now:
+
+View the equipment list
+
+Add new equipment
+
+Edit existing equipment
+
+Delete equipment
+
+
 Assumptions
 
 Single user system
