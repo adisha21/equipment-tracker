@@ -11,29 +11,30 @@ app.use(cors());
 app.use(express.json());
 
 const readData = () => {
-  const data = fs.readFileSync(DATA_FILE);
-  return JSON.parse(data);
+  const raw = fs.readFileSync(DATA_FILE, "utf-8");
+  return raw ? JSON.parse(raw) : { equipment: [] };
 };
 
 const writeData = (data) => {
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 };
 
+// GET all
 app.get("/api/equipment", (req, res) => {
   const data = readData();
   res.json(data.equipment);
 });
 
+// POST new
 app.post("/api/equipment", (req, res) => {
   const { name, type, status, lastCleanedDate } = req.body;
 
   if (!name || !type || !status || !lastCleanedDate) {
-    return res.status(400).json({ message: "All fields are required" });
+    return res.status(400).json({ message: "All fields required" });
   }
 
   const data = readData();
-
-  const newEquipment = {
+  const newItem = {
     id: uuidv4(),
     name,
     type,
@@ -41,35 +42,31 @@ app.post("/api/equipment", (req, res) => {
     lastCleanedDate
   };
 
-  data.equipment.push(newEquipment);
+  data.equipment.push(newItem);
   writeData(data);
-
-  res.status(201).json(newEquipment);
+  res.status(201).json(newItem);
 });
 
+// PUT update
 app.put("/api/equipment/:id", (req, res) => {
-  const { id } = req.params;
   const data = readData();
+  const index = data.equipment.findIndex(e => e.id === req.params.id);
 
-  const index = data.equipment.findIndex(e => e.id === id);
   if (index === -1) {
     return res.status(404).json({ message: "Equipment not found" });
   }
 
   data.equipment[index] = { ...data.equipment[index], ...req.body };
   writeData(data);
-
   res.json(data.equipment[index]);
 });
 
+// DELETE
 app.delete("/api/equipment/:id", (req, res) => {
-  const { id } = req.params;
   const data = readData();
-
-  data.equipment = data.equipment.filter(e => e.id !== id);
+  data.equipment = data.equipment.filter(e => e.id !== req.params.id);
   writeData(data);
-
-  res.json({ message: "Deleted successfully" });
+  res.json({ message: "Deleted" });
 });
 
 app.listen(PORT, () => {
