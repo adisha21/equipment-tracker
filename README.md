@@ -49,3 +49,21 @@ PUT /api/equipment/:id – Update equipment
 
 DELETE /api/equipment/:id – Delete equipment
 
+
+Assumptions
+
+Single user system
+
+Equipment name is unique
+
+JSON file used instead of database for simplicity
+
+Future Improvements
+
+Add search and filtering
+
+Add sorting
+
+Move to database (MongoDB / SQL)
+
+Improve UI responsiveness
